@@ -46,7 +46,7 @@
         <div class="col-md-8 px-0">
           <h1 class="display-4 font-italic">{{featured_post}}</h1>
           <p class="lead my-3">
-            {{featured_post.short_description}}
+            {{featured_post.short_description | truncatewords:10}}
           </p>
           <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
         </div>
@@ -65,7 +65,7 @@
               <h3>{{post}}</h3>
               <small class="mb-1 text-muted">{{post.create_at | timesince}} ago | {{post.author}}</small>
               <p class="card-text">
-                {{post.short_description}}
+                {{post.short_description | truncatewords:25}}
               </p>
             </div>
           </div>
@@ -75,24 +75,24 @@
 
       </div>
 
+      {% comment %} Recent Articles {% endcomment %}
+      <h3 class="text-uppercase text-warning" style="letter-spacing: 2px;">Recent Articles</h3>
       <main role="main" class="container p-0">
         <div class="row">
           <div class="col-md-8 blog-main">
-            <div class="blog-post">
-              <h2 class="blog-post-title">Sample blog post</h2>
-              <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
-
-              <p>
-                This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic
-                typography, images, and code are all supported.
-              </p>
-
-              <p>
-                Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus.
-                Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur
-                est at lobortis. Cras mattis consectetur purus sit amet fermentum.
-              </p>
+            {% for not_featured_post in not_featured_posts %}
+            
+              <div class="card border-0">
+                <div class="card-body">
+                  <h3>{{not_featured_post}}</h3>
+                  <small class="mb-1 text-muted">{{not_featured_post.create_at | timesince}} ago | {{not_featured_post.author}}</small>
+                  <p class="card-text">
+                    {{not_featured_post.short_description | truncatewords:25}}
+                  </p>
+                </div>
+              
             </div>
+            {% endfor %}
             <!-- /.blog-post -->
           </div>
           <!-- /.blog-main -->
