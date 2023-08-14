@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from blog_main.forms import RegistrationForm
 from blogs.models import Blog, Category
+from django.contrib.auth.forms import AuthenticationForm
 
 
 def home(request):
@@ -26,3 +27,10 @@ def register(request):
 
     context = {"form": form}
     return render(request, "register.html", context)
+
+
+def login(request):
+    form = AuthenticationForm()
+
+    context = {"form": form}
+    return render(request, "login.html", context)
