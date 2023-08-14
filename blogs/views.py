@@ -16,3 +16,8 @@ def posts_by_category(request, category_id):
     context = {"posts": posts,
                "category_by_posts": category_by_posts}
     return render(request, "posts_by_category.html", context)
+
+
+def blogs(request, slug):
+    context = {}
+    return render(request, "blogs.html", context)
