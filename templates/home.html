@@ -16,7 +16,7 @@
           <p class="lead my-3">
             {{featured_post.short_description | truncatewords:10}}
           </p>
-          <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+          <p class="lead mb-0"><a href="{% url 'blogs' featured_post.slug %}" class="text-white font-weight-bold">Continue reading...</a></p>
         </div>
       </div>
       {% endif %}
@@ -30,7 +30,7 @@
         <div class="col-md-6">
           <div class="card border-0">
             <div class="card-body">
-              <h3>{{post}}</h3>
+              <h3><a href="{% url 'blogs' post.slug %}">{{post}}</a></h3>
               <small class="mb-1 text-muted">{{post.create_at | timesince}} ago | {{post.author}}</small>
               <p class="card-text">
                 {{post.short_description | truncatewords:25}}
@@ -49,10 +49,9 @@
         <div class="row">
           <div class="col-md-8 blog-main">
             {% for not_featured_post in not_featured_posts %}
-            
               <div class="card border-0">
                 <div class="card-body">
-                  <h3>{{not_featured_post}}</h3>
+                  <h3> <a href="{% url 'blogs' not_featured_post.slug %}">{{not_featured_post}}</a></h3>
                   <small class="mb-1 text-muted">{{not_featured_post.create_at | timesince}} ago | {{not_featured_post.author}}</small>
                   <p class="card-text">
                     {{not_featured_post.short_description | truncatewords:25}}
