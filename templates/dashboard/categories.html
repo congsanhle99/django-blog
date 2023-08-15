@@ -32,7 +32,7 @@
           <td>{{ category.create_at }}</td>
           <td>{{ category.update_at }}</td>
           <td>
-            <a href="">
+            <a href="{% url 'edit_category' category.id %}">
               <i class="fa fa-edit text-success"></i>
             </a>
             &nbsp;
