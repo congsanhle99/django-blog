@@ -62,10 +62,14 @@ def posts(request):
 
 def add_post(request):
     if request.method == "POST":
-        form = BlogPostForm(request.POST)
+        form = BlogPostForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('categories')
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('posts')
+        else:
+            return form.errors
 
     form = BlogPostForm()
 
