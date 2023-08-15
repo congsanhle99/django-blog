@@ -79,3 +79,22 @@ def add_post(request):
 
     context = {"form": form}
     return render(request, "dashboard/add_post.html", context)
+
+
+def edit_post(request, pk):
+    post = get_object_or_404(Blog, pk=pk)
+    # 'instance=category' value before edit
+    # 'request.POST' new value
+    if request.method == "POST":
+        form = BlogPostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save()
+            title = form.cleaned_data['title']
+            post.slug = slugify(title)+'-'+str(post.id)
+            post.save()
+            return redirect('posts')
+
+    form = BlogPostForm(instance=post)
+
+    context = {"post": post, "form": form}
+    return render(request, "dashboard/edit_post.html", context)

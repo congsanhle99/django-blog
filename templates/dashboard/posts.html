@@ -40,9 +40,9 @@
           <td>{{ post.create_at }}</td>
           <td>{{ post.update_at }}</td>
           <td>
-            {% comment %} <a href="{% url 'edit_category' category.id %}"> {% endcomment %}
+            <a href="{% url 'edit_post' post.id %}">
               <i class="fa fa-edit text-success"></i>
-            {% comment %} </a> {% endcomment %}
+            </a>
             &nbsp;
             {% comment %} <a href="{% url 'delete_category' category.id %}"> {% endcomment %}
               <i class="fa fa-trash text-danger"></i>
