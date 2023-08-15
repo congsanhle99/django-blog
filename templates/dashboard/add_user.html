@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row">
+  <!-- left side -->
+  <!-- load sidebar -->
+  {% include 'dashboard/sidebar.html' %}
+  <!-- -->
+  <!-- -->
+
+  <!-- right side -->
+  <div class="col-md-9">
+    <h2>Add New User</h2>
+    <form action="{% url 'add_user' %}" method="POST" >
+      {% csrf_token %}
+      {{ form | crispy }}
+      <button type="submit" class="btn btn-info">Add</button>
+    </form>
+    <br/>
+  </div>
+  <!-- -->
+
+  <!-- -->
+</div>
+{% endblock content %}
