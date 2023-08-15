@@ -36,7 +36,9 @@
           <td>{{ post.category }}</td>
           <td>{{ post.author }}</td>
           <td>{{ post.status }}</td>
-          <td>{{ post.is_featured }}</td>
+          <td>
+            {% if post.is_featured %}<i class="fa fa-check text-success"></i>{% else %}<i class="fa fa-times text-danger"></i>{% endif %}
+          </td>
           <td>{{ post.create_at }}</td>
           <td>{{ post.update_at }}</td>
           <td>
@@ -44,9 +46,9 @@
               <i class="fa fa-edit text-success"></i>
             </a>
             &nbsp;
-            {% comment %} <a href="{% url 'delete_category' category.id %}"> {% endcomment %}
+            <a href="{% url 'delete_post' post.id %}">
               <i class="fa fa-trash text-danger"></i>
-            {% comment %} </a> {% endcomment %}
+            </a>
           </td>
         </tr>
         {% endfor %}
