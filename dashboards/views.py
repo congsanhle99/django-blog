@@ -12,3 +12,8 @@ def dashboard(request):
     blogs_count = Blog.objects.all().count()
     context = {"category_count": category_count, "blogs_count": blogs_count}
     return render(request, "dashboard/dashboard.html", context)
+
+
+def categories(request):
+    context = {}
+    return render(request, "dashboard/categories.html", context)
