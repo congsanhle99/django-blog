@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from blogs.models import Category, Blog
 from django.contrib.auth.decorators import login_required
 from .forms import BlogPostForm, CategoryForm
-
+from django.template.defaultfilters import slugify
 # Create your views here.
 
 
@@ -66,6 +66,10 @@ def add_post(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            post.save()
+            title = form.cleaned_data['title']
+            # post.id only valid when post saved so why 'post.save()' in line 69
+            post.slug = slugify(title)+'-'+str(post.id)
             post.save()
             return redirect('posts')
         else:
