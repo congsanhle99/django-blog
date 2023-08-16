@@ -23,6 +23,8 @@
           <th>Active</th>
           <th>Staff</th>
           <th>SuperUser</th>
+          <th>Date Join</th>
+          <th>Last Login</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -44,6 +46,8 @@
           <td>
             {% if user.is_superuser %}<i class="fa fa-check text-success"></i>{% else %}<i class="fa fa-times text-danger"></i>{% endif %}
           </td>
+          <td>{{user.date_joined}}</td>
+          <td>{% if user.last_login %}{{ user.last_login }}{% else %}<p>New Account</p>{% endif %}</td>
           <td>
             {% comment %} <a href="{% url 'edit_post' post.id %}"> {% endcomment %}
               <i class="fa fa-edit text-success"></i>
