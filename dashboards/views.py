@@ -124,3 +124,12 @@ def add_user(request):
 
     context = {"form": form}
     return render(request, "dashboard/add_user.html", context)
+
+
+def edit_user(request, pk):
+    user = get_object_or_404(User, pk=pk)
+
+    form = AddUserForm(instance=user)
+
+    context = {"form": form}
+    return render(request, "dashboard/edit_user.html", context)

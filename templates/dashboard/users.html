@@ -50,9 +50,9 @@
           <td>{{user.date_joined}}</td>
           <td>{% if user.last_login %}{{ user.last_login }}{% else %}<p>New Account</p>{% endif %}</td>
           <td>
-            {% comment %} <a href="{% url 'edit_post' post.id %}"> {% endcomment %}
+            <a href="{% url 'edit_user' user.id %}">
               <i class="fa fa-edit text-success"></i>
-            {% comment %} </a> {% endcomment %}
+            </a>
             &nbsp;
             {% comment %} <a href="{% url 'delete_post' post.id %}"> {% endcomment %}
               <i class="fa fa-trash text-danger"></i>
