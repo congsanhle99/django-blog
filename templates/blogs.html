@@ -29,7 +29,7 @@
         <h4>Comments ({{ comment_count }})</h4>
         {% if comments %}
           {% for comment in comments %}
-            <div class="card">
+            <div class="card mt-1">
               <div class="card-body">
                 <p class="card-text mb-0">{{ comment }}</p>
                 <span>
@@ -42,6 +42,18 @@
         {% else %}
         Not comment yet!
         {% endif %}
+        <!-- -->
+        <br>
+        <!-- add comment -->
+        <div class="form-group">
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <textarea name="comment" class="form-control" placeholder="Write your comment..."></textarea>
+              <input type="submit" value="Submit" class="btn btn-primary mt-2">
+            </div>
+          </form>
+        </div>
         <!-- -->
       </article>
     </div>
