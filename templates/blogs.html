@@ -34,7 +34,7 @@
                 <p class="card-text mb-0">{{ comment }}</p>
                 <span>
                   <small>{{ comment.create_at | timesince }} ago</small>
-                  <small> | By {{ comment.user }}</small>
+                  <small> | By <i>{{ comment.user }}</i></small>
                 </span>
               </div>
             </div>
@@ -46,13 +46,17 @@
         <br>
         <!-- add comment -->
         <div class="form-group">
-          <form action="" method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-              <textarea name="comment" class="form-control" placeholder="Write your comment..."></textarea>
-              <input type="submit" value="Submit" class="btn btn-primary mt-2">
-            </div>
-          </form>
+          {% if user.is_authenticated %}
+            <form action="" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <textarea name="comment" class="form-control" placeholder="Write your comment..."></textarea>
+                <input type="submit" value="Submit" class="btn btn-primary mt-2">
+              </div>
+            </form>
+          {% else %}
+            <h4><a href="{% url 'login' %}">Login</a> to write a commnent!</h4>
+          {% endif %}
         </div>
         <!-- -->
       </article>
