@@ -17,7 +17,18 @@ class BlogPostForm(forms.ModelForm):
                   'short_description', 'blog_body', 'status', 'is_featured')
 
 
+#
 class AddUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'first_name', 'last_name',
+                  'is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')
+
+# 'AddUserForm' form inherits from 'UserCreationForm' (which is a built-in form of django)
+# so it will include two more fields, password and confirm password.
+
+
+class EditUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'first_name', 'last_name',
