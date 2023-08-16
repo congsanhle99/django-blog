@@ -3,5 +3,4 @@ from blogs.models import Category
 
 def get_categories(request):
     categories = Category.objects.all()
-    print(dict(categories=categories))
     return dict(categories=categories)
